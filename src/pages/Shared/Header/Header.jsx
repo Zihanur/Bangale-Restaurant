@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa";
 
 const Header = () => {
   return (
@@ -10,16 +11,29 @@ const Header = () => {
           BANGALE RESTAURANT
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav " className="justify-content-end ">
+        <Navbar.Collapse
+          id="responsive-navbar-nav "
+          className="justify-content-end "
+        >
           <Nav className="">
-            <Link to={"/home"} className="text-white text-decoration-none fs-5">
+            <Link to={"/"} className="text-white text-decoration-none fs-5">
               Home
             </Link>
-            <Link to={"/blog"} className="text-white text-decoration-none fs-5 ms-3">
+            <Link
+              to={"/blog"}
+              className="text-white text-decoration-none fs-5 ms-3"
+            >
               Blog
             </Link>
-            <Link to={'/profile'} className="text-white text-decoration-none fs-5 ms-3">Profile</Link>
-            <Button variant="outline-danger" className="fs-6 ms-3">Login</Button>
+            <Link to={"/profile"}>
+              <FaUserCircle
+                style={{ fontSize: "3rem" }}
+                className="text-white ms-3"
+              ></FaUserCircle>
+            </Link>
+            <Link to={'/login'}><Button variant="outline-danger" className="fs-6 ms-3">
+              Login
+            </Button></Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

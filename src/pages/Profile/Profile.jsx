@@ -1,12 +1,12 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 
-const Home = () => {
+const Profile = () => {
   return (
     <Container>
-      <h3 className='text-center'>Home page</h3>
+      <h3 className='text-center'>User Profile</h3>
     </Container>
   );
 };
 
-export default Home;
+export default Profile;
