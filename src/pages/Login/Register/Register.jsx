@@ -1,24 +1,62 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Providers/AuthProviders/AuthProviders";
 
 const Register = () => {
+
+  const {createUser,addNamePhotoUrl} = useContext(AuthContext);
+  
+  const handleCreateUser = event =>{
+    //get value from form
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const password = form.password.value;
+    //user created
+    createUser(email, password)
+    .then((result)=>{
+      //updaateProfile
+      addNamePhotoUrl(name,photo)
+      .then(()=>{
+        console.log('profile update')
+      })
+      .catch((error)=>{
+        console.log(error)
+      })
+      console.log(result.user);
+    })
+    .catch((error)=>{
+      console.log(error)
+    })
+  }
+
   return (
     <Container className="my-5">
       <h3 className="text-center">Please Register Here</h3>
       <div className="row">
-        <Form className="fs-4 col-md-9 col-lg-6 mx-auto">
+        <Form onSubmit={handleCreateUser} className="fs-4 col-md-9 col-lg-6 mx-auto">
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Name</Form.Label>
+            <Form.Control type="text" name="name" placeholder="Enter your name" />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Photo URL</Form.Label>
+            <Form.Control type="text" name="photo" placeholder="Enter photo URL" />
+          </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Control type="email" name="email" placeholder="Enter email" required/>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control type="password" name="password" placeholder="Password" required/>
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
+          <Form.Group className="mb-3 fs-5" controlId="formBasicCheckbox">
+            <Form.Check type="checkbox" label={<p>Accept our <Link to={'/terms'}>Terms and Conditions</Link></p>} />
           </Form.Group>
           <Button variant="primary" type="submit" className="fs-5">
             Register
