@@ -6,8 +6,9 @@ import { FaGithubSquare, FaGooglePlusSquare } from "react-icons/fa";
 
 const Login = () => {
   
-  const {logIn} = useContext(AuthContext);
+  const {logIn, loginWithGoogle} = useContext(AuthContext);
 
+  //email, password login
   const handleLogin = event =>{
     event.preventDefault();
     const form = event.target;
@@ -15,6 +16,16 @@ const Login = () => {
     const password = form.password.value;
     console.log(email,password)
     logIn(email,password)
+    .then((result)=>{
+      console.log(result.user)
+    })
+    .catch((error)=>{
+      console.log(error)
+    })
+  }
+  //google login
+  const handleLoginWithGoogle = ()=>{
+    loginWithGoogle()
     .then((result)=>{
       console.log(result.user)
     })
@@ -48,7 +59,7 @@ const Login = () => {
       </Form>
       </div>
       <div className="mt-5 d-flex gap-3 justify-content-center">
-      <Button variant="btn btn-outline-dark" type="submit" className="fs-5">
+      <Button onClick={handleLoginWithGoogle} variant="btn btn-outline-dark" type="submit" className="fs-5">
         <FaGooglePlusSquare className="fs-2 text-warning me-1"></FaGooglePlusSquare>
           Google Sign-in
         </Button>
