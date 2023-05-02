@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
+import { AuthContext } from "../../../Providers/AuthProviders/AuthProviders";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user?.name);
+
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container className="me-auto">
@@ -16,7 +20,7 @@ const Header = () => {
           className="justify-content-end "
         >
           <Nav className="">
-            <Link to={"/"} className="text-white text-decoration-none fs-5">
+            <Link to={"/"} className="text-white text-decoration-none fs-5 ms-3">
               Home
             </Link>
             <Link
@@ -25,15 +29,20 @@ const Header = () => {
             >
               Blog
             </Link>
-            <Link to={"/profile"}>
-              <FaUserCircle
-                style={{ fontSize: "3rem" }}
-                className="text-white ms-3"
-              ></FaUserCircle>
-            </Link>
-            <Link to={'/login'}><Button variant="outline-danger" className="fs-6 ms-3">
-              Login
-            </Button></Link>
+            {user ? (
+              <Link to={"/profile"}>
+                <FaUserCircle
+                  style={{ fontSize: "2.8rem" }}
+                  className="text-white ms-3"
+                ></FaUserCircle>
+              </Link>
+            ) : (
+              <Link to={"/login"}>
+                <Button variant="outline-danger" className="fs-6 ms-3">
+                  Login
+                </Button>
+              </Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
