@@ -21,7 +21,7 @@ const Header = () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container className="me-auto">
-        <Navbar.Brand href="#home" className="fs-2">
+        <Navbar.Brand href="#home" className="fs-2 text-danger fw-bold">
           BANGALE RESTAURANT
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
