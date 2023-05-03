@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders/AuthProviders";
 import { FaGithubSquare, FaGooglePlusSquare } from "react-icons/fa";
 
 const Login = () => {
+  const [error,setError] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
   const {logIn, loginWithGoogle} = useContext(AuthContext);
@@ -21,9 +22,12 @@ const Login = () => {
     .then((result)=>{
       console.log(result.user)
       navigate(from,{replace:true})
+      setError("");
+      event.target.reset();
     })
     .catch((error)=>{
       console.log(error)
+      setError(error.message);
     })
   }
   //google login
@@ -59,6 +63,7 @@ const Login = () => {
             Don't Have an Account? <Link to="/register" className="text-danger">Register</Link>
           </Form.Text>
         </div>
+        <p className="text-danger fs-6">{error}</p>
       </Form>
       </div>
       <div className="mt-5 d-flex gap-3 justify-content-center">
