@@ -48,19 +48,19 @@ const Login = () => {
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" name="password" placeholder="Password" required/>
         </Form.Group>
-        <Button variant="primary" type="submit" className="fs-5">
+        <Button variant="danger" type="submit" className="fs-5">
           Login
         </Button>
         <div>
           <Form.Text className="text-secondary fs-5">
-            Don't Have an Account? <Link to="/register">Register</Link>
+            Don't Have an Account? <Link to="/register" className="text-danger">Register</Link>
           </Form.Text>
         </div>
       </Form>
       </div>
       <div className="mt-5 d-flex gap-3 justify-content-center">
       <Button onClick={handleLoginWithGoogle} variant="btn btn-outline-dark" type="submit" className="fs-5">
-        <FaGooglePlusSquare className="fs-2 text-warning me-1"></FaGooglePlusSquare>
+        <FaGooglePlusSquare className="fs-2 me-1"></FaGooglePlusSquare>
           Google Sign-in
         </Button>
       <Button variant="btn btn-outline-dark" type="submit" className="fs-5">

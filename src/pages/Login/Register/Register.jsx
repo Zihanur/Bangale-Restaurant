@@ -56,14 +56,14 @@ const Register = () => {
             <Form.Control type="password" name="password" placeholder="Password" required/>
           </Form.Group>
           <Form.Group className="mb-3 fs-5" controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label={<p>Accept our <Link to={'/terms'}>Terms and Conditions</Link></p>} />
+            <Form.Check type="checkbox" label={<p>Accept our <Link to={'/terms'} className="text-danger">Terms and Conditions</Link></p>} />
           </Form.Group>
-          <Button variant="primary" type="submit" className="fs-5">
+          <Button variant="danger" type="submit" className="fs-5">
             Register
           </Button>
           <div>
             <Form.Text className="text-secondary fs-5">
-              You have an Account? <Link to="/login">Login</Link>
+              You have an Account? <Link to="/login" className="text-danger">Login</Link>
             </Form.Text>
           </div>
         </Form>
