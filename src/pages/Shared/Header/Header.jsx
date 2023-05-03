@@ -6,7 +6,7 @@ import { AuthContext } from "../../../Providers/AuthProviders/AuthProviders";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
-
+  console.log(user)
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -45,6 +45,7 @@ const Header = () => {
               <>
                 <Link to={"/profile"}>
                   <FaUserCircle
+                    title={user?.displayName}
                     style={{ fontSize: "2.8rem" }}
                     className="text-white ms-3"
                   ></FaUserCircle>
