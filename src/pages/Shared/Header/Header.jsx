@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import { AuthContext } from "../../../Providers/AuthProviders/AuthProviders";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
-  console.log(user)
+
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -29,18 +29,18 @@ const Header = () => {
           className="justify-content-end "
         >
           <Nav className="">
-            <Link
+            <NavLink
               to={"/"}
               className="text-white text-decoration-none fs-5 ms-3"
             >
               Home
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to={"/blog"}
               className="text-white text-decoration-none fs-5 ms-3"
             >
               Blog
-            </Link>
+            </NavLink>
             {user ? (
               <>
                 <Link to={"/profile"}>
