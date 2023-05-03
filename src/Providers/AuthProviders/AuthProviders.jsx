@@ -18,6 +18,7 @@ const googleAuthProvider = new GoogleAuthProvider();
 
 const AuthProviders = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   //firebase user create function
   const createUser = (email, password) => {
@@ -50,6 +51,7 @@ const AuthProviders = ({ children }) => {
     const unsubcribe = onAuthStateChanged(auth, (currentUser) => {
       console.log("Current user in the auth state observed", currentUser);
       setUser(currentUser);
+      setLoading(false);
     });
     return () => {
       unsubcribe();
@@ -63,6 +65,7 @@ const AuthProviders = ({ children }) => {
     logIn,
     loginWithGoogle,
     logOut,
+    loading,
   };
   return (
     <AuthContext.Provider value={authinfo}>{children}</AuthContext.Provider>

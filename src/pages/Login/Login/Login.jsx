@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import { Button, Container, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders/AuthProviders";
 import { FaGithubSquare, FaGooglePlusSquare } from "react-icons/fa";
 
 const Login = () => {
-  
+  const location = useLocation();
+  const navigate = useNavigate();
   const {logIn, loginWithGoogle} = useContext(AuthContext);
+  const from = location?.state?.from?.pathname || '/'
 
   //email, password login
   const handleLogin = event =>{
@@ -18,6 +20,7 @@ const Login = () => {
     logIn(email,password)
     .then((result)=>{
       console.log(result.user)
+      navigate(from,{replace:true})
     })
     .catch((error)=>{
       console.log(error)
