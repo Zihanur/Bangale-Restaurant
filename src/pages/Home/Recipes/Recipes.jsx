@@ -27,7 +27,7 @@ const Recipes = ({ recipe }) => {
             className="position-absolute bottom-0 end-0"
             variant="danger"
           >
-            Favorite
+            Add Favorite
           </Button>
         </Card.Body>
       </Card>

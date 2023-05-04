@@ -31,13 +31,13 @@ const Header = () => {
           <Nav className="">
             <NavLink
               to={"/"}
-              className="text-white text-decoration-none fs-5 ms-3"
+              className="text-white text-decoration-none fs-5 ms-3 btn btn-outline-danger"
             >
               Home
             </NavLink>
             <NavLink
               to={"/blog"}
-              className="text-white text-decoration-none fs-5 ms-3"
+              className="text-white text-decoration-none fs-5 ms-3 btn btn-outline-danger"
             >
               Blog
             </NavLink>
