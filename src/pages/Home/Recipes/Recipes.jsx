@@ -15,10 +15,14 @@ const Recipes = ({ recipe }) => {
       <Card className="h-100 position-relative">
         {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
         <Card.Body>
-          <Card.Title>{recipe_name}</Card.Title>
+          <Card.Title className="fs-4">{recipe_name}</Card.Title>
           <div>
-            <p>Ingredients: {ingredients}</p>
-            <p>Cooking Method: {cooking_method}</p>
+            <p>
+              <span className="fw-bold">Ingredients:</span> {ingredients}
+            </p>
+            <p>
+              <span className="fw-bold">Cooking Method:</span> {cooking_method}
+            </p>
             <p>Rating: {rating}</p>
           </div>
           <Button

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Carousel, Col, Container, Row } from "react-bootstrap";
+import React from "react";
+import { Container } from "react-bootstrap";
 import { useLoaderData } from "react-router-dom";
 import Recipes from "../Recipes/Recipes";
 
@@ -26,11 +26,11 @@ const ChefRecipes = () => {
         </div>
       </div>
       <div className="row gap-y-4 mb-3">
-      <h1 className="text-center mt-5">
+        <h1 className="text-center mt-5">
           {name} <span className="text-danger fw-bold">Recipes</span>
         </h1>
         <hr className="w-75 w-md-50 mx-auto border border-dark border-2 opacity-50"></hr>
-        {recipes.slice(0,3).map((recipe) => (
+        {recipes.slice(0, 3).map((recipe) => (
           <Recipes key={recipe._id} recipe={recipe}></Recipes>
         ))}
       </div>

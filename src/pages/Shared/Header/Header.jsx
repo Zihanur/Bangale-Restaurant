@@ -20,7 +20,7 @@ const Header = () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container className="me-auto">
-        <Navbar.Brand href="#home" className="fs-2 text-danger fw-bold">
+        <Navbar.Brand href="/" className="fs-2 text-danger fw-bold">
           BANGALE RESTAURANT
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -60,7 +60,7 @@ const Header = () => {
               </>
             ) : (
               <Link to={"/login"}>
-                <Button variant="outline-danger" className="fs-6 ms-3">
+                <Button variant="outline-danger" className="fs-5 ms-3">
                   Login
                 </Button>
               </Link>
